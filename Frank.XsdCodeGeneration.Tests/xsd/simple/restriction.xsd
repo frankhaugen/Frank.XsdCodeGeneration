@@ -1,0 +1,24 @@
+﻿<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:element name="module">
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:restriction base="xsd:anyType">
+          <xsd:attribute name="name" type="xsd:string" use="required" />
+        </xsd:restriction>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:simpleType name="DecimalLimitedType">
+    <xsd:restriction base="xsd:decimal">
+      <xsd:minInclusive value="10.00"/>
+      <xsd:maxInclusive value="24.99"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:element name="minmax">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="val" type="DecimalLimitedType"></xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
