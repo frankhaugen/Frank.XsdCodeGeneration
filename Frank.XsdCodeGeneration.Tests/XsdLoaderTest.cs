@@ -23,4 +23,16 @@ public class XsdLoaderTest
         
         _output.WriteLine(xsd.IsCompiled.ToString());
     }
+    
+    [Fact]
+    public void LoadAndGenerate()
+    {
+        var xsdFile = new FileInfo(Path.Combine(AppContext.BaseDirectory, "xsd", "ubl", "maindoc", "UBL-Invoice-2.1.xsd"));
+        var xsd = XmlSchemaSetLoader.Load(xsdFile);
+        
+        var generator = new XsdCodeGenerator();
+        var result = generator.CreateClasses(xsd);
+        
+        _output.WriteLine(result);
+    }
 }
